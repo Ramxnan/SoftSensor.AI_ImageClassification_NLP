@@ -17,7 +17,7 @@ difficult to classify objects and localize them.
 Data Provided
 
 ### Link to Data:
-Link_to_data
+[In pdf]
 Data is present in a folder called, assignment data.
 Inside that folder first folder is whole slide images, in which two whole slides images are
 present.
@@ -35,7 +35,7 @@ Train an image classification model on these images and show model’s performan
 using graphs, comparing true and predicted results.
 
 ## NLP Task
-Link_to_website , a website in which contains all the information about organs, tissue. This
+Link_to_website [In pdf], a website in which contains all the information about organs, tissue. This
 knowledge is of extreme importance for pathologist.
 Make a dictionary using Natural language processing from this website such that each organ
 name should be the key, and contents present in the organs should be the vaule.
