@@ -1,0 +1,34 @@
+vowel [aeiou]
+consonant [a-z]
+%{
+    int vcount,ccount;
+%}
+%%
+{vowel} {vcount++;}
+{consonant} {ccount++,fprintf(yyout,"true");}
+%%
+int yywrap(){return(1);}
+
+int main(void){
+    yyin = fopen("input.txt", "r");
+    yyout=fopen("outpt.txt","w");
+    yylex();
+
+    printf("vowel: %d\n", vcount);
+    printf("consonant: %d\n", ccount);
+
+    return 0;
+}
+
+%%
+("int "|"float "|"double "|"String "){letters}({letters}|{numbers})*"()" {nocount++;}
+("int "|"float "|"double "|"String "){letters}({letters}|{numbers})*"("("int "|"float "|"double "|"String "){letters}({letters}|{numbers})*")"	{onecount++;}
+("int "|"float "|"double "|"String "){letters}({letters}|{numbers})*"("(("int "|"float "|"double "|"String "){letters}({letters}|{numbers})*",")+("int "|"float "|"double "|"String "){letters}({letters}|{numbers})*")"	{ncount++;}
+%%
+%%
+\n      {nline++,nchar++;}
+[^ \t\n]+   {nword++,nchar+=yyleng;}
+. {nchar++;}
+%%
+"/*"([^*]|"*"+[^/])*"*/"    {nmc++;}
+%%
